@@ -1,4 +1,6 @@
-# Confidence-Calibrated Source Screening
+# ci-gate
+
+Repository: [Yiming-S/ci-gate](https://github.com/Yiming-S/ci-gate).
 
 This repository provides the core analysis code and compact reproducibility
 artifacts for confidence-calibrated, set-valued source screening in
@@ -36,6 +38,13 @@ tests/          Public-repository integrity tests
 ```
 
 ## Quick verification
+
+Clone the public repository:
+
+```bash
+git clone https://github.com/Yiming-S/ci-gate.git
+cd ci-gate
+```
 
 Create an isolated Python environment and install the lightweight dependencies
 needed for result verification and figure reconstruction:
