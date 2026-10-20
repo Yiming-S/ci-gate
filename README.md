@@ -107,6 +107,28 @@ Dataset acquisition is described in [`data/README.md`](data/README.md). Full
 runs write to the ignored `simulation_results/` directory unless another
 output directory is supplied.
 
+### Ma2020 bootstrap budgets
+
+The primary covariance-space analysis used 499 draws for full-target screening
+and 199 draws for screening within each of the 30 target half-splits. Archived
+source and original-manifest history verify these values. A later cleanup
+removed the downstream argument switch; on 2026-10-20 the active entry point
+was corrected to pass `--down-boot` directly. The released numerical results
+are unchanged. The budgets are recorded in
+[`results/eeg/ma2020/protocol.json`](results/eeg/ma2020/protocol.json).
+
+For a future full reanalysis, specify both budgets explicitly:
+
+```bash
+.venv/bin/python analysis/ci_gate_ma2020_riemann.py --subjects 1-25 \
+  --target-session 15 --boot 499 --down-boot 199 --splits 30 \
+  --seed 20260618 --downstream --out-dir simulation_results/ma2020_reproduction
+```
+
+This command requires the EEG data paths described below; it was not run for
+the correction. `tests/test_ma2020_bootstrap_budget.py` verifies budget routing
+and manifest values with mocked analysis functions, without EEG or resampling.
+
 ## Reproducibility boundary
 
 The compact release supports these independently checkable operations:

@@ -27,6 +27,14 @@ provide shared functions imported by the primary entry points.
 `screening_core.py` contains the data-agnostic simultaneous-bound and
 set-construction operations covered by deterministic unit tests.
 
+The primary Ma2020 budgets are 499 full-target and 199 downstream bootstrap
+draws (`--boot 499 --down-boot 199`, 30 splits, seed 20260618). The downstream
+function reads `args.down_boot` directly; changing `--boot` does not change the
+downstream budget. New manifests retain both budgets, the seed, executed command,
+and source-file SHA-256. The historical correction did not rerun analyses or
+change released results. See `results/eeg/ma2020/protocol.json` and the mocked
+parameter-routing tests in `tests/test_ma2020_bootstrap_budget.py`.
+
 `ci_gate_target_only_reference.py` calls the same `train_eval_ts` function as
 the source-trained pipeline: LSQR LDA with automatic shrinkage, covariance
 shrinkage 0.05, and a training-only Riemannian reference. It trains only on

@@ -1,0 +1,19 @@
+{
+  "dataset": "Ma2020",
+  "analysis": "primary squared-AIRM latest-session analysis",
+  "target_session": 15,
+  "source_sessions": "1-14",
+  "subjects": 25,
+  "screening_boot": 499,
+  "downstream_boot": 199,
+  "splits": 30,
+  "seed": 20260618,
+  "screening_shrinkage": 0.1,
+  "classifier_covariance_shrinkage": 0.05,
+  "budget_verified_on": "2026-10-20",
+  "verification_basis": "The original manifest recorded boot=199 after the original code switched to the downstream budget. Two archived source reads preserve that switch; a successful 2026-07-13 cleanup patch removed it after the result CSVs had been generated. The active code now passes down_boot directly.",
+  "original_result_generation_date": "2026-07-07",
+  "original_downstream_summary_sha256": "d5d474145389f61a08728dd9b27eb0f05f9341c0c224d060055ee2891a448c50",
+  "results_changed": false,
+  "experiments_rerun_for_correction": 0
+}

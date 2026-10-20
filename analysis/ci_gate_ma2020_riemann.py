@@ -20,7 +20,9 @@ discrepancy and tangent-space features.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -278,7 +280,8 @@ def run_subject_downstream(subject: int, args, rng) -> list[dict]:
     rows = []
     for screen_idx, test_idx in splitter.split(tgt, tgt_lab):
         screen_covs, test_covs, test_lab = tgt[screen_idx], tgt[test_idx], tgt_lab[test_idx]
-        dh, db = riemann_estimates_and_bootstrap(src, screen_covs, rng, args.boot, args.shrinkage, True)
+        # Keep the downstream budget independent of full-target screening.
+        dh, db = riemann_estimates_and_bootstrap(src, screen_covs, rng, args.down_boot, args.shrinkage, True)
         pair_ref = screen_pair_ref(dh, db, k, args.alpha_c, args.alpha_d, args.alpha)
         top1 = np.argsort(dh, kind="mergesort")[:1]
         top3 = np.argsort(dh, kind="mergesort")[:3]
@@ -401,6 +404,8 @@ def main() -> None:
 
     (args.out_dir / "manifest.json").write_text(json.dumps({
         "script": Path(__file__).name, "subjects": subjects, "target_session": args.target_session,
+        "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "command": [sys.executable, *sys.argv], "seed": args.seed,
         "data_root": str(args.data_root), "cache_root": str(args.cache_root),
         "out_dir": str(args.out_dir),
         "shrinkage": args.shrinkage, "screening_boot": screening_boot,
