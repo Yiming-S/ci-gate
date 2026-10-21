@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this repository, cite the software artifact described here."
-title: "Confidence-Calibrated Source Screening for Cross-Session Motor-Imagery EEG under Distribution Shift"
+title: "Confidence-calibrated source screening for cross-session motor imagery brain-computer interfaces"
 type: software
 repository-code: "https://github.com/Yiming-S/ci-gate"
 authors:

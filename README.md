@@ -7,8 +7,8 @@ artifacts for confidence-calibrated, set-valued source screening in
 cross-session motor-imagery EEG. All source discrepancies reuse the same
 empirical target, which induces dependence across the candidate comparisons.
 
-The associated manuscript is titled *Confidence-Calibrated Source Screening
-for Cross-Session Motor-Imagery EEG under Distribution Shift*.
+The associated manuscript is titled *Confidence-calibrated source screening
+for cross-session motor imagery brain-computer interfaces*.
 
 ## What is included
 
